@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */; };
+		3A4827B627C6DE7F008BB6AF /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4827B527C6DE7F008BB6AF /* Keyboard.swift */; };
 		3A48416827C5BF5B00CD83C6 /* Wordle2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */; };
 		3A48416A27C5BF5B00CD83C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48416927C5BF5B00CD83C6 /* ContentView.swift */; };
 		3A48416C27C5BF5C00CD83C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A48416B27C5BF5C00CD83C6 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonViews.swift; sourceTree = "<group>"; };
+		3A4827B527C6DE7F008BB6AF /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		3A48416427C5BF5B00CD83C6 /* Wordle2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordle2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle2App.swift; sourceTree = "<group>"; };
 		3A48416927C5BF5B00CD83C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			children = (
 				3A48417F27C5C11500CD83C6 /* GameView.swift */,
 				3A48418227C5C12400CD83C6 /* GuessView.swift */,
+				3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */,
+				3A4827B527C6DE7F008BB6AF /* Keyboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 			files = (
 				3A48416A27C5BF5B00CD83C6 /* ContentView.swift in Sources */,
 				3A48418927C5C1A400CD83C6 /* Color+Extension.swift in Sources */,
+				3A4827B627C6DE7F008BB6AF /* Keyboard.swift in Sources */,
+				3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */,
 				3A48418327C5C12400CD83C6 /* GuessView.swift in Sources */,
 				3A48417C27C5C0E300CD83C6 /* WordleDataModel.swift in Sources */,
 				3A48418027C5C11500CD83C6 /* GameView.swift in Sources */,
