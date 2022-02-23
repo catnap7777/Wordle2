@@ -53,13 +53,10 @@ struct GameView: View {
                         }
                     }
                 }
-                
-                
             }
             
-            
-            
         }
+       
     }
 }
 
