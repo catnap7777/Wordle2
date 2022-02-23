@@ -11,7 +11,7 @@ struct GameView: View {
     @EnvironmentObject var dm: WordleDataModel
     var body: some View {
         NavigationView {
-            VStack(spacing: 3){
+            VStack(spacing: 3) {
                 GuessView(guess: $dm.guesses[0])
                 GuessView(guess: $dm.guesses[1])
                 GuessView(guess: $dm.guesses[2])
