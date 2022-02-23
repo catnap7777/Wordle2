@@ -22,7 +22,7 @@ struct GameView: View {
             .frame(width: Global.boardWidth, height: 6 * Global.boardWidth / 5)
 //        Text("Hello, world!")
 //            .padding()
-//            .navigationTitle("Hi there")
+//            .navigationTitle("WORDLE")
 //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
@@ -36,7 +36,7 @@ struct GameView: View {
                     Text("WORDLE")
                         .font(.largeTitle)
                         .fontWeight(.heavy)
-                        .foregroundColor(.init("Fern"))
+                        .foregroundColor(.correct)
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
