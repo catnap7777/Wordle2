@@ -17,6 +17,7 @@ class WordleDataModel: ObservableObject {
     var currentWord = ""
     var tryIndex = 0
     var inPlay = false
+    var gameOver = false
     
     var gameStarted: Bool {
         !currentWord.isEmpty || tryIndex > 0
@@ -59,14 +60,29 @@ class WordleDataModel: ObservableObject {
     }
     
     func enterWord() {
-        if verifyWord() {
-            print("vaild word")
+        if currentWord == selectedWord {
+            gameOver = true
+            print("You win!")
+            setCurrentGuessColors()
+            inPlay = false
         } else {
-            withAnimation {
-                self.incorrectAttempts[tryIndex] += 1
+            if verifyWord() {
+                print("vaild word")
+                setCurrentGuessColors()
+                tryIndex += 1
+                if tryIndex == 6 {
+                    gameOver = true
+                    inPlay = false
+                    print("You lose")
+                }
+            } else {
+                withAnimation {
+                    self.incorrectAttempts[tryIndex] += 1
+                }
+                incorrectAttempts[tryIndex] = 0
             }
-            incorrectAttempts[tryIndex] = 0
         }
+        
         
     }
     
@@ -82,6 +98,10 @@ class WordleDataModel: ObservableObject {
     
     func verifyWord() -> Bool {
         UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: currentWord)
+    }
+    
+    func setCurrentGuessColors() {
+        
     }
     
     
