@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */; };
 		3A4827B627C6DE7F008BB6AF /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4827B527C6DE7F008BB6AF /* Keyboard.swift */; };
+		3A4833AA27CAB39500B0E224 /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4833A927CAB39500B0E224 /* Shake.swift */; };
 		3A48416827C5BF5B00CD83C6 /* Wordle2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */; };
 		3A48416A27C5BF5B00CD83C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48416927C5BF5B00CD83C6 /* ContentView.swift */; };
 		3A48416C27C5BF5C00CD83C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A48416B27C5BF5C00CD83C6 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonViews.swift; sourceTree = "<group>"; };
 		3A4827B527C6DE7F008BB6AF /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		3A4833A927CAB39500B0E224 /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
 		3A48416427C5BF5B00CD83C6 /* Wordle2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordle2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle2App.swift; sourceTree = "<group>"; };
 		3A48416927C5BF5B00CD83C6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A4833A827CAB37700B0E224 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3A4833A927CAB39500B0E224 /* Shake.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		3A48415B27C5BF5B00CD83C6 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 		3A48416627C5BF5B00CD83C6 /* Wordle2 */ = {
 			isa = PBXGroup;
 			children = (
+				3A4833A827CAB37700B0E224 /* Animations */,
 				3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */,
 				3A48417A27C5C0AC00CD83C6 /* Models */,
 				3A48417827C5C07F00CD83C6 /* ViewModels */,
@@ -201,6 +212,7 @@
 				3A48416A27C5BF5B00CD83C6 /* ContentView.swift in Sources */,
 				3A48418927C5C1A400CD83C6 /* Color+Extension.swift in Sources */,
 				3A4827B627C6DE7F008BB6AF /* Keyboard.swift in Sources */,
+				3A4833AA27CAB39500B0E224 /* Shake.swift in Sources */,
 				3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */,
 				3A48418327C5C12400CD83C6 /* GuessView.swift in Sources */,
 				3A48417C27C5C0E300CD83C6 /* WordleDataModel.swift in Sources */,
