@@ -101,8 +101,33 @@ class WordleDataModel: ObservableObject {
     }
     
     func setCurrentGuessColors() {
+        //..create array of correct letters
+        let correctLetters = selectedWord.map { String($0) }
+        //.. dictionary to check freq of letters - incase a word has two same letters like "Books"
+        var frequency = [String : Int]()
+        for letter in correctLetters {
+            frequency[letter, default: 0] += 1
+        }
         
-    }
+        //.. if correct letter in correct spot
+        for index in 0...4 {
+            let correctLetter = correctLetters[index]
+            let guessLetter = guesses[tryIndex].guessLetters[index]
+            if guessLetter == correctLetter {
+                guesses[tryIndex].bgColors[index] = .correct
+                frequency[guessLetter]! -= 1
+            }
+        }
+        //.. if correct letter but in wrong spot
+        for index in 0...4 {
+            let guessLetter = guesses[tryIndex].guessLetters[index]
+            if correctLetters.contains(guessLetter) && guesses[tryIndex].bgColors[index] != .correct
+                && frequency[guessLetter]! > 0{
+                guesses[tryIndex].bgColors[index] = .misplaced
+                frequency[guessLetter]! -= 1
+            }
+        }
+     }
     
     
 }
