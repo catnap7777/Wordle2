@@ -21,6 +21,7 @@
 		3A48418927C5C1A400CD83C6 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48418827C5C1A400CD83C6 /* Color+Extension.swift */; };
 		3A48418F27C5C1E900CD83C6 /* tygermatrix303.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A48418E27C5C1E900CD83C6 /* tygermatrix303.png */; };
 		3A48419327C5C38500CD83C6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48419227C5C38500CD83C6 /* Global.swift */; };
+		3A9592A8283690D40086785D /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9592A7283690D40086785D /* FlipView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		3A48418827C5C1A400CD83C6 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		3A48418E27C5C1E900CD83C6 /* tygermatrix303.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tygermatrix303.png; sourceTree = "<group>"; };
 		3A48419227C5C38500CD83C6 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		3A9592A7283690D40086785D /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				3A4833A927CAB39500B0E224 /* Shake.swift */,
+				3A9592A7283690D40086785D /* FlipView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -80,13 +83,13 @@
 		3A48416627C5BF5B00CD83C6 /* Wordle2 */ = {
 			isa = PBXGroup;
 			children = (
-				3A4833A827CAB37700B0E224 /* Animations */,
 				3A48416727C5BF5B00CD83C6 /* Wordle2App.swift */,
+				3A48416927C5BF5B00CD83C6 /* ContentView.swift */,
 				3A48417A27C5C0AC00CD83C6 /* Models */,
 				3A48417827C5C07F00CD83C6 /* ViewModels */,
 				3A48417727C5C07700CD83C6 /* Views */,
 				3A48417927C5C08A00CD83C6 /* Extensions */,
-				3A48416927C5BF5B00CD83C6 /* ContentView.swift */,
+				3A4833A827CAB37700B0E224 /* Animations */,
 				3A48416B27C5BF5C00CD83C6 /* Assets.xcassets */,
 				3A48418E27C5C1E900CD83C6 /* tygermatrix303.png */,
 				3A48417027C5BF5C00CD83C6 /* Info.plist */,
@@ -216,6 +219,7 @@
 				3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */,
 				3A48418327C5C12400CD83C6 /* GuessView.swift in Sources */,
 				3A48417C27C5C0E300CD83C6 /* WordleDataModel.swift in Sources */,
+				3A9592A8283690D40086785D /* FlipView.swift in Sources */,
 				3A48418027C5C11500CD83C6 /* GameView.swift in Sources */,
 				3A48416827C5BF5B00CD83C6 /* Wordle2App.swift in Sources */,
 				3A48418627C5C17100CD83C6 /* Guess.swift in Sources */,
