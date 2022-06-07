@@ -22,6 +22,9 @@
 		3A48418F27C5C1E900CD83C6 /* tygermatrix303.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A48418E27C5C1E900CD83C6 /* tygermatrix303.png */; };
 		3A48419327C5C38500CD83C6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48419227C5C38500CD83C6 /* Global.swift */; };
 		3A9592A8283690D40086785D /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9592A7283690D40086785D /* FlipView.swift */; };
+		3A984841284FAF9600BBBAEB /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A984840284FAF9600BBBAEB /* ToastView.swift */; };
+		3A984843284FB52100BBBAEB /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A984842284FB52100BBBAEB /* Statistic.swift */; };
+		3A9848452850011D00BBBAEB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9848442850011D00BBBAEB /* StatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		3A48418E27C5C1E900CD83C6 /* tygermatrix303.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tygermatrix303.png; sourceTree = "<group>"; };
 		3A48419227C5C38500CD83C6 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		3A9592A7283690D40086785D /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		3A984840284FAF9600BBBAEB /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		3A984842284FB52100BBBAEB /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		3A9848442850011D00BBBAEB /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,8 @@
 				3A48418227C5C12400CD83C6 /* GuessView.swift */,
 				3A4827B227C6CD53008BB6AF /* LetterButtonViews.swift */,
 				3A4827B527C6DE7F008BB6AF /* Keyboard.swift */,
+				3A984840284FAF9600BBBAEB /* ToastView.swift */,
+				3A9848442850011D00BBBAEB /* StatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			children = (
 				3A48418527C5C17100CD83C6 /* Guess.swift */,
 				3A48419227C5C38500CD83C6 /* Global.swift */,
+				3A984842284FB52100BBBAEB /* Statistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,9 +227,12 @@
 				3A4833AA27CAB39500B0E224 /* Shake.swift in Sources */,
 				3A4827B327C6CD53008BB6AF /* LetterButtonViews.swift in Sources */,
 				3A48418327C5C12400CD83C6 /* GuessView.swift in Sources */,
+				3A984843284FB52100BBBAEB /* Statistic.swift in Sources */,
 				3A48417C27C5C0E300CD83C6 /* WordleDataModel.swift in Sources */,
+				3A984841284FAF9600BBBAEB /* ToastView.swift in Sources */,
 				3A9592A8283690D40086785D /* FlipView.swift in Sources */,
 				3A48418027C5C11500CD83C6 /* GameView.swift in Sources */,
+				3A9848452850011D00BBBAEB /* StatsView.swift in Sources */,
 				3A48416827C5BF5B00CD83C6 /* Wordle2App.swift in Sources */,
 				3A48418627C5C17100CD83C6 /* Guess.swift in Sources */,
 				3A48419327C5C38500CD83C6 /* Global.swift in Sources */,
@@ -356,7 +368,7 @@
 				DEVELOPMENT_TEAM = JQ4QUUYZ53;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wordle2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +390,7 @@
 				DEVELOPMENT_TEAM = JQ4QUUYZ53;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Wordle2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

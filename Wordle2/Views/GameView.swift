@@ -5,11 +5,16 @@
 //  Created by Karen Mathes on 2/22/22.
 //
 
+
+
+//***** don't forget to make sure that the simulator has settings>general>dictionary set!!!!!!! Otherwise, all words will be invalid
+
 import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var dm: WordleDataModel
     var body: some View {
+        ZStack {
         NavigationView {
             VStack {
                 Spacer()
@@ -26,12 +31,32 @@ struct GameView: View {
                     .padding(.top)
                 Spacer()
             }
-//        Text("Hello, world!")
-//            .padding()
-//            .navigationTitle("WORDLE")
-//            .navigationBarTitleDisplayMode(.inline)
+            //.. need iOS15 for this
+            .overlay(alignment: .top) {
+                if let toastText = dm.toastText {
+                    ToastView(toastText: toastText)
+                        .offset(y: 20)
+                }
+            }
+            //        Text("Hello, world!")
+            //            .padding()
+            //            .navigationTitle("WORDLE")
+            //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                    //.. display a "new" button on toolbar after game is over so user can start a new game
+                    HStack {
+                        if !dm.inPlay {
+                            Button {
+                                dm.newGame()
+                            } label: {
+                                Text("New")
+                                    .padding()
+                                    .foregroundColor(.primary)
+                                    .background(Color.yellow)
+                            }
+                        }
+                    }
                     Button {
                         
                     } label: {
@@ -40,7 +65,7 @@ struct GameView: View {
                 }
                 ToolbarItem(placement: ToolbarItemPlacement.principal) {
                     Text("KAM WORDLE")
-                        .font(.largeTitle)
+                        .font(.title)
                         .fontWeight(.heavy)
                         .foregroundColor(.correct)
                 }
@@ -48,7 +73,9 @@ struct GameView: View {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     HStack {
                         Button {
-                            
+                            withAnimation {
+                                dm.showStats.toggle()
+                            }
                         } label: {
                             Image(systemName: "chart.bar")
                         }
@@ -62,7 +89,11 @@ struct GameView: View {
             }
             
         }
-       
+            if dm.showStats {
+                StatsView()
+            }
+        }
+        .navigationViewStyle(.stack)
     }
 }
 

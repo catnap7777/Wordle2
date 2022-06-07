@@ -11,13 +11,21 @@ class WordleDataModel: ObservableObject {
     
     @Published var guesses: [Guess] = []
     @Published var incorrectAttempts = [Int](repeating: 0, count: 6)
+    @Published var toastText: String?
+    @Published var showStats = false
     
     var keyColors = [String : Color]()
+    var matchedLetters = [String]()
+    var misplacedLetters = [String]()
+    var correctlyPlacedLetters = [String]()
     var selectedWord = ""
     var currentWord = ""
     var tryIndex = 0
     var inPlay = false
     var gameOver = false
+    //.. msgs for when game over
+    var toastWords = ["Genius", "Magnificent", "Impressive", "Splendid", "Great", "Few"]
+    var currentStat: Statistic
     
     var gameStarted: Bool {
         !currentWord.isEmpty || tryIndex > 0
@@ -28,12 +36,14 @@ class WordleDataModel: ObservableObject {
     }
     
     init() {
+        currentStat = Statistic.loadStat()
         newGame()
     }
     
     func newGame() {
         populateDefaults()
         selectedWord = Global.commonWords.randomElement()!
+        correctlyPlacedLetters = [String](repeating: "-", count: 5)
         currentWord = ""
         inPlay = true
       tryIndex = 0
@@ -52,6 +62,8 @@ class WordleDataModel: ObservableObject {
         for char in letters {
             keyColors[String(char)] = .unused
         }
+        matchedLetters = []
+        misplacedLetters = []
         
     }
     
@@ -67,6 +79,9 @@ class WordleDataModel: ObservableObject {
             gameOver = true
             print("You win!")
             setCurrentGuessColors()
+            currentStat.update(win: true, index: tryIndex)
+            //.. msg depending on how many tries it took to solve
+            showToast(with: toastWords[tryIndex])
             inPlay = false
         } else {
             if verifyWord() {
@@ -75,14 +90,17 @@ class WordleDataModel: ObservableObject {
                 tryIndex += 1
               currentWord = ""
                 if tryIndex == 6 {
+                    currentStat.update(win: false)
                     gameOver = true
                     inPlay = false
-                    print("You lose")
+                    showToast(with: selectedWord)
+                    //print("You lose")
                 }
             } else {
                 withAnimation {
                     self.incorrectAttempts[tryIndex] += 1
                 }
+                showToast(with: "Not in word list.")
                 incorrectAttempts[tryIndex] = 0
             }
         }
@@ -112,35 +130,73 @@ class WordleDataModel: ObservableObject {
         for letter in correctLetters {
             frequency[letter, default: 0] += 1
         }
-        
         //.. if correct letter in correct spot
         for index in 0...4 {
             let correctLetter = correctLetters[index]
             let guessLetter = guesses[tryIndex].guessLetters[index]
             if guessLetter == correctLetter {
                 guesses[tryIndex].bgColors[index] = .correct
+                if !matchedLetters.contains(guessLetter) {
+                    matchedLetters.append(guessLetter)
+                    keyColors[guessLetter] = .correct
+                }
+                if misplacedLetters.contains(guessLetter) {
+                    if let index = misplacedLetters.firstIndex(where: {$0 == guessLetter}) {
+                        misplacedLetters.remove(at: index)
+                    }
+                }
+                correctlyPlacedLetters[index] = correctLetter
                 frequency[guessLetter]! -= 1
             }
         }
         //.. if correct letter but in wrong spot
         for index in 0...4 {
             let guessLetter = guesses[tryIndex].guessLetters[index]
-            if correctLetters.contains(guessLetter) && guesses[tryIndex].bgColors[index] != .correct
-                && frequency[guessLetter]! > 0{
+            if correctLetters.contains(guessLetter)
+                && guesses[tryIndex].bgColors[index] != .correct
+                && frequency[guessLetter]! > 0 {
                 guesses[tryIndex].bgColors[index] = .misplaced
+                if !misplacedLetters.contains(guessLetter) && !matchedLetters.contains(guessLetter) {
+                    misplacedLetters.append(guessLetter)
+                    keyColors[guessLetter] = .misplaced
+                }
                 frequency[guessLetter]! -= 1
             }
         }
+        
+        for index in 0...4 {
+            let guessLetter = guesses[tryIndex].guessLetters[index]
+            if keyColors[guessLetter] != .correct
+                && keyColors[guessLetter] != .misplaced {
+                keyColors[guessLetter] = .wrong
+            }
+        }
         flipCards(for: tryIndex)
-     }
-
-  func flipCards(for row: Int) {
-    for col in 0...4 {
-      DispatchQueue.main.asyncAfter(deadline: .now() + Double(col) * 0.2) {
-        self.guesses[row].cardFlipped[col].toggle()
-      }
     }
-  }
+    
+    func flipCards(for row: Int) {
+        for col in 0...4 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(col) * 0.2) {
+                self.guesses[row].cardFlipped[col].toggle()
+            }
+        }
+    }
+    
+    //.. the message that fades in as a toast (via overlay in GameView) whenever the word doesn't exist in the dictionary
+    func showToast(with text: String?) {
+        withAnimation {
+            toastText = text
+        }
+        withAnimation(Animation.linear(duration: 0.2).delay(3.0)) {
+            toastText = nil
+            if gameOver {
+                withAnimation(Animation.linear(duration: 0.2).delay(3.0)) {
+                    showStats.toggle()
+                }
+            }
+        }
+    }
+        
     
     
 }
