@@ -31,6 +31,10 @@ struct GameView: View {
                     .padding(.top)
                 Spacer()
             }
+            .disabled(dm.showStats)
+            .navigationViewStyle(.stack)
+            .navigationBarTitleDisplayMode(.inline)
+            .disabled(dm.showStats)
             //.. need iOS15 for this
             .overlay(alignment: .top) {
                 if let toastText = dm.toastText {

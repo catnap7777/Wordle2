@@ -17,5 +17,14 @@ struct Guess {
     var guessLetters: [String] {
         word.map {String($0)}
     }
+    
+    //.. for share sheet
+    //⬜🟩⬜🟨🟩
+    var results: String {
+        let tryColors: [Color : String] = [.misplaced : "🟨", .correct : "🟩", .wrong : "⬜"]
+        //.. map items from the colors to the tryColors dictionary and join them together
+        return bgColors.compactMap {tryColors[$0]}.joined(separator: "")
+    }
+    
    
 }
