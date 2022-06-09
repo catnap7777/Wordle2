@@ -13,6 +13,7 @@ class WordleDataModel: ObservableObject {
     @Published var incorrectAttempts = [Int](repeating: 0, count: 6)
     @Published var toastText: String?
     @Published var showStats = false
+    @AppStorage("hardMode") var hardMode = false
     
     var keyColors = [String : Color]()
     var matchedLetters = [String]()
@@ -85,6 +86,16 @@ class WordleDataModel: ObservableObject {
             inPlay = false
         } else {
             if verifyWord() {
+                if hardMode {
+                    if let toastString = hardCorrectCheck() {
+                        showToast(with: toastString)
+                        return
+                    }
+                    if let toastString = hardMidsplacedCheck() {
+                        showToast(with: toastString)
+                        return
+                    }
+                }
                 print("vaild word")
                 setCurrentGuessColors()
                 tryIndex += 1
@@ -120,6 +131,31 @@ class WordleDataModel: ObservableObject {
     
     func verifyWord() -> Bool {
         UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: currentWord)
+    }
+    
+    //.. playing the hard mode version of game
+    func hardCorrectCheck() -> String? {
+        let guessLetters = guesses[tryIndex].guessLetters
+        for i in 0...4 {
+            if correctlyPlacedLetters[i] != "-" {
+                if guessLetters[i] != correctlyPlacedLetters[i] {
+                    let formatter = NumberFormatter()
+                    formatter.numberStyle = .ordinal
+                    return "\(formatter.string(for: i + 1)!) letter must be '\(correctlyPlacedLetters[i])'."
+                }
+            }
+        }
+        return nil
+    }
+    
+    func hardMidsplacedCheck() -> String? {
+        let guessLetters = guesses[tryIndex].guessLetters
+        for letter in misplacedLetters {
+            if !guessLetters.contains(letter) {
+                return ("Must contain the letter '\(letter)'.")
+            }
+        }
+        return nil
     }
     
     func setCurrentGuessColors() {
