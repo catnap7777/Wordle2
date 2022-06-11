@@ -14,6 +14,7 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var dm: WordleDataModel
     @State var showSettings = false
+    @State var showHelp = false
     var body: some View {
         ZStack {
         NavigationView {
@@ -32,7 +33,7 @@ struct GameView: View {
                     .padding(.top)
                 Spacer()
             }
-            //.disabled(dm.showStats)
+            .disabled(dm.showStats)
             .navigationViewStyle(.stack)
             .navigationBarTitleDisplayMode(.inline)
             .disabled(dm.showStats)
@@ -43,12 +44,8 @@ struct GameView: View {
                         .offset(y: 20)
                 }
             }
-            //        Text("Hello, world!")
-            //            .padding()
-            //            .navigationTitle("WORDLE")
-            //            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     //.. display a "new" button on toolbar after game is over so user can start a new game
                     HStack {
                         if !dm.inPlay {
@@ -63,11 +60,12 @@ struct GameView: View {
                             .buttonBorderShape(.roundedRectangle(radius: 25))
                             .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.purple, lineWidth: 3))
                         }
-                    }
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "questionmark.circle")
+                        //}
+                        Button {
+                            showHelp.toggle()
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                        }
                     }
                 }
                 ToolbarItem(placement: ToolbarItemPlacement.principal) {
@@ -104,6 +102,9 @@ struct GameView: View {
             }
         }
         .navigationViewStyle(.stack)
+        .sheet(isPresented: $showHelp) {
+            HelpView()
+        }
     }
 }
 

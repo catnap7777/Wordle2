@@ -28,6 +28,7 @@
 		3A984843284FB52100BBBAEB /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A984842284FB52100BBBAEB /* Statistic.swift */; };
 		3A9848452850011D00BBBAEB /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9848442850011D00BBBAEB /* StatsView.swift */; };
 		3A9E54642851222B00BB3B9F /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9E54632851222B00BB3B9F /* UIWindow+Extension.swift */; };
+		3AAB60632855267D006A5754 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAB60622855267D006A5754 /* HelpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3A984842284FB52100BBBAEB /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		3A9848442850011D00BBBAEB /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		3A9E54632851222B00BB3B9F /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		3AAB60622855267D006A5754 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				3A984840284FAF9600BBBAEB /* ToastView.swift */,
 				3A9848442850011D00BBBAEB /* StatsView.swift */,
 				3A94004D28527E85003B2683 /* SettingsView.swift */,
+				3AAB60622855267D006A5754 /* HelpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				3A48418327C5C12400CD83C6 /* GuessView.swift in Sources */,
 				3A984843284FB52100BBBAEB /* Statistic.swift in Sources */,
 				3A48417C27C5C0E300CD83C6 /* WordleDataModel.swift in Sources */,
+				3AAB60632855267D006A5754 /* HelpView.swift in Sources */,
 				3A984841284FAF9600BBBAEB /* ToastView.swift in Sources */,
 				3A9592A8283690D40086785D /* FlipView.swift in Sources */,
 				3A48418027C5C11500CD83C6 /* GameView.swift in Sources */,
