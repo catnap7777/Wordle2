@@ -56,10 +56,12 @@ struct GameView: View {
                                 dm.newGame()
                             } label: {
                                 Text("New")
-                                    .padding()
                                     .foregroundColor(.primary)
-                                    .background(Color.yellow)
                             }
+                            .buttonStyle(.bordered)
+                            .tint(.purple)
+                            .buttonBorderShape(.roundedRectangle(radius: 25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.purple, lineWidth: 3))
                         }
                     }
                     Button {
@@ -70,9 +72,9 @@ struct GameView: View {
                 }
                 ToolbarItem(placement: ToolbarItemPlacement.principal) {
                     Text("KAM WORDLE")
-                        .font(.title)
+                        .font(.title3)
                         .fontWeight(.heavy)
-                        .foregroundColor(.correct)
+                        .foregroundColor(dm.hardMode ? Color(.systemRed) : .correct)
                 }
                 
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
