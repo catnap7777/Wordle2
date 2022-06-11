@@ -24,24 +24,28 @@ struct Statistic: Codable {
     
     //.. func to save our current stats to userdefaults... and since Statistic conforms to codable, we can use a Json encoder to do that
     func saveStat() {
-        if let encoded = try? JSONEncoder().encode(self) {
-            UserDefaults.standard.set(encoded, forKey: "Stat")
-        }
+//        if let encoded = try? JSONEncoder().encode(self) {
+//            UserDefaults.standard.set(encoded, forKey: "Stat")
+//        }
+        //.. ***************** NOW saving in icloud instead using UbiquitousStore *********************
+        NSUbiquitousKeyValueStore.stat = self
     }
     
     //.. static function that returns a statistic
     static func loadStat() -> Statistic {
         //.. retrieve from userdefaults the data for key "Stat". If unsuccessful, you never had stats before so just return a new Statistic object
-        if let savedStat = UserDefaults.standard.object(forKey: "Stat") as? Data {
-            //.. try to use JSON decoder to decode the data that was returned.  If successful, return currentStat... otherwise, return a new Statistic object (ie. you didn't have any stats yet)
-            if let currentStat = try? JSONDecoder().decode(Statistic.self, from: savedStat) {
-                return currentStat
-            } else {
-                return Statistic()
-            }
-        } else {
-            return Statistic()
-        }
+//        if let savedStat = UserDefaults.standard.object(forKey: "Stat") as? Data {
+//            //.. try to use JSON decoder to decode the data that was returned.  If successful, return currentStat... otherwise, return a new Statistic object (ie. you didn't have any stats yet)
+//            if let currentStat = try? JSONDecoder().decode(Statistic.self, from: savedStat) {
+//                return currentStat
+//            } else {
+//                return Statistic()
+//            }
+//        } else {
+//            return Statistic()
+//        }
+        //.. ***************** NOW loading icloud instead using UbiquitousStore *********************
+        NSUbiquitousKeyValueStore.stat
     }
     
     //.. function to update stats... must be a mutating function because by default, you can't mutate properties of a struct.

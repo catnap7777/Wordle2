@@ -19,6 +19,10 @@ struct GameView: View {
         ZStack {
         NavigationView {
             VStack {
+                //.. from video 9 for weird ipod touch issue
+                if Global.screenHeight < 600 {
+                    Text("")
+                }
                 Spacer()
                 VStack(spacing: 3) {
                     ForEach(0...5, id: \.self) { index in
@@ -70,15 +74,18 @@ struct GameView: View {
                 }
                 ToolbarItem(placement: ToolbarItemPlacement.principal) {
                     Text("KAM WORDLE")
-                        .font(.title3)
+                        .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(dm.hardMode ? Color(.systemRed) : .correct)
+                    //.. so KAM WORDLE title doesn't get truncated when "new" button for new game shows up
+                        .minimumScaleFactor(0.5)
                 }
                 
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Button {
                             withAnimation {
+                                dm.currentStat = Statistic.loadStat()
                                 dm.showStats.toggle()
                             }
                         } label: {

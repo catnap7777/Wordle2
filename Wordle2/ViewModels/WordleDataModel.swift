@@ -235,10 +235,24 @@ class WordleDataModel: ObservableObject {
     
     func shareResult() {
         let stat = Statistic.loadStat()
-        //.. layout exactly like this...
+        //.. to get rid of any guesses (lines in results) that were not needed ... ie. game won in < 6 moves
+        let results = guesses.enumerated().compactMap { $0 }
+        var guessString = ""
+        for result in results {
+            if result.0 <= tryIndex {
+                guessString += result.1.results + "\n"
+            }
+        }
+        //.. old way
+//        //.. layout exactly like this...
+//        let resultString = """
+//Wordle \(stat.games) \(tryIndex < 6 ? "\(tryIndex + 1)/6" : "")
+//\(guesses.compactMap{$0.results}.joined(separator: "\n"))
+//"""
+        //.. new way
         let resultString = """
 Wordle \(stat.games) \(tryIndex < 6 ? "\(tryIndex + 1)/6" : "")
-\(guesses.compactMap{$0.results}.joined(separator: "\n"))
+\(guessString)
 """
         let activityController = UIActivityViewController(activityItems: [resultString], applicationActivities: nil)
         switch UIDevice.current.userInterfaceIdiom {
